@@ -1,0 +1,12 @@
+Django
+django-phonenumber-field
+requests
+requests_oauthlib
+sentry-sdk
+gunicorn
+psycopg2-binary
+graphene-django
+django-filter
+django-cors-headers
+git+https://github.com/Peter-Slump/python-keycloak-client.git@master
+git+https://github.com/TheEnbyperor/django-keycloak-auth.git@master

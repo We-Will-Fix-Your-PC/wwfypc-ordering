@@ -1,0 +1,37 @@
+interface Node {
+  id: ID!
+}
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Network implements Node {
+  id: ID!,
+  name: String!,
+  displayName: String!
+}
+type NetworkConnection {
+  pageInfo: PageInfo!
+  edges: [NetworkEdge]
+}
+type NetworkEdge {
+  node: Network
+  cursor: String!
+}
+
+type Query {
+  networks(
+    before: String,
+    after: String,
+    first: Int,
+    last: Int,
+    name: String
+  ): NetworkConnection
+
+  node(
+    id: ID!
+  ): Node
+}

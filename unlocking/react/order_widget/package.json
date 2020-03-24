@@ -1,0 +1,27 @@
+{
+  "name": "order_widget",
+  "version": "1.0.0",
+  "author": "Q <q@magicalcodewit.ch>",
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@sentry/browser": "^5.5.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-relay": "^9.0.0",
+    "graphql": "^14.6.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-relay": "^9.0.0",
+    "relay-compiler": "^9.0.0",
+    "webpack": "^4.38.0",
+    "webpack-merge": "^4.2.1",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.6"
+  },
+  "scripts": {
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql"
+  }
+}
