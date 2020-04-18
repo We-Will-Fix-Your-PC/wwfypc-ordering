@@ -1,6 +1,84 @@
+schema {
+  query: Query
+}
+
+type Brand implements Node {
+  id: ID!
+  name: String!
+  displayName: String!
+  image: String!
+  modelSet(before: String, after: String, first: Int, last: Int): ModelConnection!
+  phoneunlockSet(before: String, after: String, first: Int, last: Int, brand: ID, device: ID, network: ID): PhoneUnlockConnection!
+}
+
+type BrandConnection {
+  pageInfo: PageInfo!
+  edges: [BrandEdge]!
+}
+
+type BrandEdge {
+  node: Brand
+  cursor: String!
+}
+
+type Model implements Node {
+  id: ID!
+  brand: Brand!
+  name: String!
+  displayName: String!
+  image: String!
+  phoneunlockSet(before: String, after: String, first: Int, last: Int, brand: ID, device: ID, network: ID): PhoneUnlockConnection!
+}
+
+type ModelConnection {
+  pageInfo: PageInfo!
+  edges: [ModelEdge]!
+}
+
+type ModelEdge {
+  node: Model
+  cursor: String!
+}
+
+type Network implements Node {
+  id: ID!
+  name: String!
+  networknameSet(before: String, after: String, first: Int, last: Int): NetworkNameConnection!
+  phoneunlockSet(before: String, after: String, first: Int, last: Int, brand: ID, device: ID, network: ID): PhoneUnlockConnection!
+}
+
+type NetworkConnection {
+  pageInfo: PageInfo!
+  edges: [NetworkEdge]!
+}
+
+type NetworkEdge {
+  node: Network
+  cursor: String!
+}
+
+type NetworkName implements Node {
+  id: ID!
+  network: Network!
+  name: String!
+  displayName: String!
+  image: String!
+}
+
+type NetworkNameConnection {
+  pageInfo: PageInfo!
+  edges: [NetworkNameEdge]!
+}
+
+type NetworkNameEdge {
+  node: NetworkName
+  cursor: String!
+}
+
 interface Node {
   id: ID!
 }
+
 type PageInfo {
   hasNextPage: Boolean!
   hasPreviousPage: Boolean!
@@ -8,30 +86,31 @@ type PageInfo {
   endCursor: String
 }
 
-type Network implements Node {
-  id: ID!,
-  name: String!,
-  displayName: String!
+type PhoneUnlock implements Node {
+  id: ID!
+  brand: Brand!
+  network: Network!
+  device: Model
+  price: Float!
+  time: String!
+  title(network: ID!): String
+  data(imei: String!): String
+  sig(imei: String!, network: ID!): String
 }
-type NetworkConnection {
+
+type PhoneUnlockConnection {
   pageInfo: PageInfo!
-  edges: [NetworkEdge]
+  edges: [PhoneUnlockEdge]!
 }
-type NetworkEdge {
-  node: Network
+
+type PhoneUnlockEdge {
+  node: PhoneUnlock
   cursor: String!
 }
 
 type Query {
-  networks(
-    before: String,
-    after: String,
-    first: Int,
-    last: Int,
-    name: String
-  ): NetworkConnection
-
-  node(
-    id: ID!
-  ): Node
+  networks(before: String, after: String, first: Int, last: Int, name: String): NetworkConnection
+  brands(before: String, after: String, first: Int, last: Int, name: String): BrandConnection
+  phoneUnlock(before: String, after: String, first: Int, last: Int, brand: ID, device: ID, network: ID): PhoneUnlockConnection
+  node(id: ID!): Node
 }

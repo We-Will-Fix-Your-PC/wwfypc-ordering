@@ -11,25 +11,31 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import json
+import logging
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+logging.basicConfig(level=logging.INFO)
+
+sentry_sdk.init(
+    dsn="https://0a914ff3633c48faae2d52143a6e1493@o266594.ingest.sentry.io/5204961",
+    environment=os.getenv("SENTRY_ENVIRONMENT", "dev"),
+    release=os.getenv("RELEASE", None),
+    integrations=[DjangoIntegration()],
+    send_default_pii=True
+)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+SECRET_KEY = os.getenv("SECRET_KEY", "")
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'eb5@0xa4w$t(oage=u4hr9el*t^!5m*xzvgg$t%i+ppsxjx98v'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.getenv("HOST", "ordering.cardifftec.uk")]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django',
+    'unlocking',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -45,6 +54,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_keycloak_auth.middleware.OIDCMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -69,14 +79,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wwfypc_ordering.wsgi.application'
 
+AUTHENTICATION_BACKENDS = ["django_keycloak_auth.auth.KeycloakAuthorization"]
+
+LOGIN_URL = "oidc_login"
+LOGOUT_REDIRECT_URL = "oidc_login"
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        "ENGINE": "django.db.backends.postgresql",
+        "HOST": os.getenv("DB_HOST", "localhost"),
+        "NAME": os.getenv("DB_NAME", "ordering"),
+        "USER": os.getenv("DB_USER", "ordering"),
+        "PASSWORD": os.getenv("DB_PASS"),
     }
 }
 
@@ -117,4 +134,37 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+SENTRY_ENVIRONMENT = os.getenv("SENTRY_ENVIRONMENT", "dev")
+
+EXTERNAL_URL_BASE = os.getenv("EXTERNAL_URL", f"https://{ALLOWED_HOSTS[0]}")
+
+STATIC_URL = f"{EXTERNAL_URL_BASE}/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+MEDIA_URL = f"{EXTERNAL_URL_BASE}/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+PAYMENTS_TOKEN = os.getenv("PAYMENTS_TOKEN")
+
+PHONENUMBER_DEFAULT_REGION = 'GB'
+
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", 25))
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", False)
+EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", False)
+
+KEYCLOAK_SERVER_URL = os.getenv("KEYCLOAK_SERVER_URL")
+KEYCLOAK_REALM = os.getenv("KEYCLOAK_REALM")
+OIDC_CLIENT_ID = os.getenv("KEYCLOAK_CLIENT_ID")
+OIDC_CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET")
+OIDC_SCOPES = os.getenv("KEYCLOAK_SCOPES")
+
+CORS_ORIGIN_WHITELIST = [
+    "https://wewillfixyourmac.co.uk"
+    "https://wewillfixyourpc.co.uk"
+    "https://wewillfixyouripad.co.uk"
+]
+CORS_ALLOW_CREDENTIALS = True
+

@@ -28,6 +28,7 @@ admin.site.logout = Logout.as_view()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("auth/", include("django_keycloak_auth.urls")),
+    path("unlocking/", include("unlocking.urls")),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
 ]
 

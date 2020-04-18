@@ -3,16 +3,16 @@ from django.db import models
 
 class Network(models.Model):
     name = models.CharField(max_length=255)
-    display_name = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.display_name
+        return self.name
 
 
-class NetworkAlternativeName(models.Model):
+class NetworkName(models.Model):
     network = models.ForeignKey(Network, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255)
+    image = models.ImageField()
 
     def __str__(self):
         return self.display_name
@@ -21,6 +21,7 @@ class NetworkAlternativeName(models.Model):
 class Brand(models.Model):
     name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255)
+    image = models.ImageField()
 
     def __str__(self):
         return self.display_name
@@ -30,6 +31,7 @@ class Model(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255)
+    image = models.ImageField()
 
     def __str__(self):
         return self.display_name

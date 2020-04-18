@@ -2,13 +2,13 @@ from django.contrib import admin
 from . import models
 
 
-class NetworkAlternativeNameInline(admin.TabularInline):
-    model = models.NetworkAlternativeName
+class NetworkNameInline(admin.StackedInline):
+    model = models.NetworkName
 
 
 @admin.register(models.Network)
 class NetworkAdmin(admin.ModelAdmin):
-    inlines = [NetworkAlternativeNameInline]
+    inlines = [NetworkNameInline]
 
 
 admin.site.register(models.Brand)

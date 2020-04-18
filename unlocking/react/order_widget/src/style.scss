@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+
+$primary-colour: #ff7300;
+
+.UnlockOrderWidget {
+  font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+
+  h1, h2 {
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .SelectNetwork, .SelectBrand, .SelectModel, .UnlockDetails, .UnlockPayment {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: #ddd 0 0 5px inset;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    .back {
+      position: absolute;
+      top: 30px;
+      font-size: 35px;
+    }
+
+    h2 span {
+      font-weight: 700;
+    }
+  }
+
+  .NetworkIcons, .BrandIcons, .ModelIcons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+    grid-gap: 15px;
+
+    .NetworkIcon, .BrandIcon, .ModelIcon {
+      border: 1px solid #aaa;
+      max-height: 250px;
+      max-width: 250px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      border-radius: 5px;
+      background-color: white;
+
+      &:hover {
+        box-shadow: #aaa 0 0 2px inset;
+        cursor: pointer;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      span {
+        align-self: center;
+        font-weight: 400;
+        margin-top: 10px;
+        font-size: 21px;
+      }
+    }
+  }
+
+  .UnlockDetails form {
+    display: grid;
+    justify-content: center;
+    grid-gap: 20px;
+    padding: 20px;
+    align-self: center;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      input {
+        margin-left: 15px;
+      }
+    }
+
+    button {
+      justify-self: center;
+      background: #f27c20;
+      border: none;
+      border-radius: 5px;
+      padding: 15px 30px;
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+}

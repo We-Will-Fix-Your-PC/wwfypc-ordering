@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_keycloak_auth.middleware.OIDCMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -141,6 +142,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = f"{EXTERNAL_URL_BASE}/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+PAYMENTS_TOKEN = "abc123"
 
 with open(os.path.join(BASE_DIR, "secrets/keycloak.json")) as f:
     keycloak_conf = json.load(f)
