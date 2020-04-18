@@ -163,9 +163,9 @@ OIDC_CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET")
 OIDC_SCOPES = os.getenv("KEYCLOAK_SCOPES")
 
 CORS_ORIGIN_WHITELIST = [
-    "https://wewillfixyourmac.co.uk"
-    "https://wewillfixyourpc.co.uk"
-    "https://wewillfixyouripad.co.uk"
+    "https://wewillfixyourmac.co.uk",
+    "https://wewillfixyourpc.co.uk",
+    "https://wewillfixyouripad.co.uk",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
