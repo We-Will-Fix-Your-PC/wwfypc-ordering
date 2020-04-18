@@ -6,7 +6,7 @@ import {
 } from 'relay-runtime';
 
 export const API_ROOT = process.env.BASE_URL ? process.env.BASE_URL :
-    process.env.NODE_ENV  === 'production' ? 'https://order.cardifftec.uk/' : 'https://wwfypc-ordering.eu.ngrok.io/';
+    process.env.NODE_ENV  === 'production' ? 'https://ordering.cardifftec.uk/' : 'https://wwfypc-ordering.eu.ngrok.io/';
 
 function fetchQuery(
   operation,

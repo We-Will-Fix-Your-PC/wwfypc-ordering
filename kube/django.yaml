@@ -32,7 +32,7 @@ metadata:
   name: django-conf
   namespace: ordering
 data:
-  HOST: orderingpcardifftec.uk
+  HOST: ordering.cardifftec.uk
   DJANGO_SETTINGS_MODULE: wwfypc_ordering.settings
   EXTERNAL_URL: "https://ordering.cardifftec.uk"
   SENTRY_ENVIRONMENT: "prod"
