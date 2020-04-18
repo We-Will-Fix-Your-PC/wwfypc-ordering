@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django-keycloak-auth',
+    'django_keycloak_auth',
     'graphene_django',
     'unlocking',
     'corsheaders'
