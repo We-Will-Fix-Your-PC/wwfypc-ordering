@@ -85,6 +85,11 @@ AUTHENTICATION_BACKENDS = ["django_keycloak_auth.auth.KeycloakAuthorization"]
 LOGIN_URL = "oidc_login"
 LOGOUT_REDIRECT_URL = "oidc_login"
 
+
+GRAPHENE = {
+    'SCHEMA': 'wwfypc_ordering.schema.schema'
+}
+
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
