@@ -89,7 +89,7 @@ export default class App extends React.Component {
                         } else {
                             return <UnlockDetails
                                 brand={this.state.brand} model={this.state.model} network={this.state.network}
-                                onBack={() => this.setState({model: null})}
+                                onBack={() => this.setState({model: null, brand: null})}
                             />
                         }
                     })()}
