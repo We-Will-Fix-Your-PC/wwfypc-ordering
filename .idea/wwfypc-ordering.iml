@@ -17,6 +17,7 @@
     <orderEntry type="jdk" jdkName="Python 3.8 (wwfypc-ordering)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="payment" level="application" />
+    <orderEntry type="library" name="payment" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
