@@ -5,6 +5,7 @@ import {graphql, QueryRenderer} from "react-relay";
 class PaymentForm extends React.Component {
     componentDidMount() {
         window.makePaymentFormFromData(this.refs.payment, {
+            environment: process.env.NODE_ENV  === 'production' ? "LIVE" : "TEST",
             customer: {
                 request_name: true,
                 request_email: true,

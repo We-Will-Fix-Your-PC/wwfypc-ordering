@@ -89,10 +89,10 @@ export default class UnlockDetails extends React.Component {
                         } else {
                             return <div className="UnlockDetails">
                                 <h2>
-                                    Your order to unlock your <span>{props.brand.displayName}</span>
+                                    Your order to unlock your <span>{props.brand.displayName} </span>
                                     from <span>{props.network.displayName}</span> has been accepted
                                 </h2>
-                                <h2>We'll be in touch at <span>{this.state.email}</span> when we have futher updates</h2>
+                                <h2>We'll be in touch at <span>{this.state.email}</span> when we have further updates</h2>
                             </div>
                         }
                     }
