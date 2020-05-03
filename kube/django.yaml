@@ -107,7 +107,7 @@ spec:
               prefix: "KEYCLOAK_"
             - secretRef:
                 name: payment
-              prefix: "PAYMENT_"
+              prefix: "PAYMENTS_"
       containers:
         - name: gunicorn
           image: theenbyperor/wwfypc-ordering:(version)
@@ -139,7 +139,7 @@ spec:
               prefix: "KEYCLOAK_"
             - secretRef:
                 name: payment
-              prefix: "PAYMENT_"
+              prefix: "PAYMENTS_"
 ---
 apiVersion: v1
 kind: Service
