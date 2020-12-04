@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Price Widget</title>
+</head>
+<body>
+<div id="price-widget"></div>
+<script src="{% static 'video_conversion/price_widget/js/widget.js' %}"></script>
+<script>
+    window.makeVideoPriceWidget(document.getElementById("price-widget"))
+</script>
+</body>
+</html>

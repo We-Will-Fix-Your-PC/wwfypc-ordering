@@ -106,5 +106,4 @@ class Query(graphene.ObjectType):
     networks = DjangoFilterConnectionField(Network)
     brands = DjangoFilterConnectionField(Brand)
     phone_unlock = DjangoFilterConnectionField(PhoneUnlock)
-    node = graphene.relay.Node.Field()
 

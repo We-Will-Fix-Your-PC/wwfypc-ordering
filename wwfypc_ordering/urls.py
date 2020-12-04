@@ -29,6 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("auth/", include("django_keycloak_auth.urls")),
     path("unlocking/", include("unlocking.urls")),
+    path("video_conversion/", include("video_conversion.urls")),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
 ]
 

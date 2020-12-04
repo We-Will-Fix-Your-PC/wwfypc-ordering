@@ -21,6 +21,8 @@ type BrandEdge {
   cursor: String!
 }
 
+scalar Decimal
+
 type Model implements Node {
   id: ID!
   brand: Brand!
@@ -79,6 +81,44 @@ interface Node {
   id: ID!
 }
 
+type OriginalFormat implements Node {
+  id: ID!
+  name: String!
+  image: String
+  singularName: String!
+  originalformatextraSet(before: String, after: String, first: Int, last: Int): OriginalFormatTierExtraConnection!
+  groupName: String
+  price(count: Int!): Decimal
+}
+
+type OriginalFormatConnection {
+  pageInfo: PageInfo!
+  edges: [OriginalFormatEdge]!
+}
+
+type OriginalFormatEdge {
+  node: OriginalFormat
+  cursor: String!
+}
+
+type OriginalFormatTierExtra implements Node {
+  id: ID!
+  originalFormat: OriginalFormat!
+  name: String!
+  image: String
+  price: Float!
+}
+
+type OriginalFormatTierExtraConnection {
+  pageInfo: PageInfo!
+  edges: [OriginalFormatTierExtraEdge]!
+}
+
+type OriginalFormatTierExtraEdge {
+  node: OriginalFormatTierExtra
+  cursor: String!
+}
+
 type PageInfo {
   hasNextPage: Boolean!
   hasPreviousPage: Boolean!
@@ -109,6 +149,7 @@ type PhoneUnlockEdge {
 }
 
 type Query {
+  originalFormats(before: String, after: String, first: Int, last: Int): OriginalFormatConnection
   networks(before: String, after: String, first: Int, last: Int, name: String): NetworkConnection
   brands(before: String, after: String, first: Int, last: Int, name: String): BrandConnection
   phoneUnlock(before: String, after: String, first: Int, last: Int, brand: ID, device: ID, network: ID): PhoneUnlockConnection

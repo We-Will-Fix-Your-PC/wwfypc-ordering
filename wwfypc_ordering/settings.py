@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_keycloak_auth',
     'graphene_django',
     'unlocking',
+    'video_conversion',
     'corsheaders'
 ]
 
