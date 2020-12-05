@@ -30,6 +30,8 @@ module.exports = {
         filename: "[name].js"
     },
     plugins: [
-        new webpack.EnvironmentPlugin( { ...process.env } )
+        new webpack.ProvidePlugin({
+            process: "process/browser"
+        })
     ]
 };

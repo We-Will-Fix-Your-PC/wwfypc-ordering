@@ -10,5 +10,140 @@ $primary-colour: #ff7300;
     font-weight: 500;
   }
 
+  .SelectFormat, .SelectCount, .SelectPrice {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: #ddd 0 0 5px inset;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 
+    .back {
+      position: absolute;
+      top: 30px;
+      font-size: 35px;
+    }
+
+    h2 span {
+      font-weight: 700;
+    }
+  }
+
+  .Formats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+    grid-gap: 15px;
+
+    .Format {
+      border: 1px solid #aaa;
+      max-height: 250px;
+      max-width: 250px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      border-radius: 5px;
+      background: #f4d6be;
+
+      img {
+        max-width: 100%;
+      }
+
+      span {
+        align-self: center;
+        font-weight: 400;
+        margin-top: 10px;
+        font-size: 21px;
+      }
+    }
+  }
+
+  .ItemCount {
+    display: grid;
+    justify-content: center;
+    grid-gap: 20px;
+    padding: 20px;
+    align-self: center;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background: #f4d6be;
+
+    input {
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+
+    button {
+      justify-self: center;
+      background: #f27c20;
+      border: none;
+      border-radius: 5px;
+      padding: 15px 30px;
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+
+  .PriceSummary {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    max-width: 750px;
+    margin: 0 auto;
+    border: 1px solid #777;
+    border-radius: 5px;
+    background: #f4d6be;
+    grid-gap: 20px;
+
+    .PriceExtras {
+      border-right: 1px solid #bbb;
+      padding: 20px;
+
+      table {
+        width: 100%;
+        font-size: 18px;
+        border-collapse: collapse;
+
+        label {
+          width: 100%;
+          text-align: center;
+          display: inline-block;
+        }
+
+        th, td {
+          border-bottom: 1px solid #aaa;
+          padding: 10px 0;
+        }
+
+        tr:last-of-type {
+          th, td {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+
+    .PriceTotals {
+      padding: 20px;
+
+      table {
+        width: 100%;
+        font-size: 21px;
+        border-collapse: collapse;
+
+        th, td {
+          padding: 10px 0;
+        }
+
+        tr:last-of-type {
+          th, td {
+            border-top: 1px solid #aaa;
+          }
+        }
+      }
+    }
+  }
 }

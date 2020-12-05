@@ -87,7 +87,7 @@ type OriginalFormat implements Node {
   image: String
   singularName: String!
   originalformatextraSet(before: String, after: String, first: Int, last: Int): OriginalFormatTierExtraConnection!
-  groupName: String
+  groupName(count: Int): String
   price(count: Int!): Decimal
 }
 

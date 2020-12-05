@@ -53,7 +53,8 @@ const node/*: ConcreteRequest*/ = {
         "name": "FormatList_query"
       }
     ],
-    "type": "Query"
+    "type": "Query",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -132,6 +133,7 @@ const node/*: ConcreteRequest*/ = {
     ]
   },
   "params": {
+    "cacheID": "d42a9c98263f15283126e023cf16afc5",
     "id": null,
     "metadata": {},
     "name": "widgetFormatQuery",

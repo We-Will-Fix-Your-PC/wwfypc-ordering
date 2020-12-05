@@ -26,7 +26,7 @@ class ItemCount extends React.Component {
     render() {
         return (
             <div className="ItemCount">
-                <input type="number" value={this.state.number} onChange={this.updateNumber}/>
+                <input type="number" value={this.state.number} onChange={this.updateNumber} min={1}/>
                 <button onClick={this.onClick}>Select</button>
             </div>
         );

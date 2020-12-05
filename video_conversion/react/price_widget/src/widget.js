@@ -49,8 +49,7 @@ export default class App extends React.Component {
                         } else {
                             return <div className="SelectPrice">
                                 <span className="back" onClick={() => this.setState({itemCount: null})}>⬅</span>
-                                <h1>{this.state.itemCount} {this.state.originalFormat.groupName}</h1>
-                                <Price format={this.state.originalFormat} count={this.state.count} />
+                                <Price format={this.state.originalFormat} count={this.state.itemCount} />
                             </div>
                         }
                     })()}
